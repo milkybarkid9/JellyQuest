@@ -30,9 +30,10 @@ public class DungeonDisplay : MonoBehaviour {
 				string ch = mapGenerator.map [r, c].ToString();
 				int charPos = mapGenerator.boxCharacters.IndexOf (ch);
 
-                if (ch.Equals(''))
+                if (ch.Equals('X'))
+                    charPos = 0;
 
-				if (charPos < 0 || !visitedCells[r,c]) 
+                if (charPos < 0 || !visitedCells[r,c]) 
 					continue;
 
                 //if (c == 1 && r == 2 || c == mapGenerator.mapColumns - 1 && r == 2)
