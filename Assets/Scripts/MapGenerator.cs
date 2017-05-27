@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-<<<<<<< HEAD
+
 using System.Linq;
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
+
 
 public class MapGenerator : MonoBehaviour {
 	public int mapRows = 5;
@@ -38,61 +37,60 @@ public class MapGenerator : MonoBehaviour {
 		Debug.Log (output);
 	}
 
-	public void InitializeMap() {
-		map = new char[mapRows, mapColumns];
+    public void InitializeMap()
+    {
+        map = new char[mapRows, mapColumns];
 
-		// Put 'X's in top and bottom rows.
-		for (int c = 0; c < mapColumns; c++) {
-			map [0, c] = 'X';
-			map [mapRows - 1, c] = 'X';
-		}
-
-		// Put 'X's in the left and right columns.
-		for (int r = 0; r < mapRows; r++) {
-			map [r, 0] = 'X';
-			map [r, mapColumns - 1] = 'X';
-		}
-
-		// Set 'O' for the other map spaces (which means 'free').
-		for (int r = 1; r < mapRows - 1; r++) {
-			for (int c = 1; c < mapColumns - 1; c++) {
-				map [r, c] = 'O';
-			}
-		}
-
-		int mapSeed = System.DateTime.Now.Millisecond; 
-		Random.seed = mapSeed;
-		Debug.Log ("Current seed = " + mapSeed);
-
-		// map [1, 1] = '@';
-		// map [1, 2] = '@';
-		// map [2, 1] = '@';
-		// map [2, 2] = '@';
-
-<<<<<<< HEAD
-		for (int r = 1; r < mapRows - 1; r++)
+        // Put 'X's in top and bottom rows.
+        for (int c = 0; c < mapColumns; c++)
         {
-			for (int c = 1; c < mapColumns - 1; c++)
+            map[0, c] = 'X';
+            map[mapRows - 1, c] = 'X';
+        }
+
+        // Put 'X's in the left and right columns.
+        for (int r = 0; r < mapRows; r++)
+        {
+            map[r, 0] = 'X';
+            map[r, mapColumns - 1] = 'X';
+        }
+
+        // Set 'O' for the other map spaces (which means 'free').
+        for (int r = 1; r < mapRows - 1; r++)
+        {
+            for (int c = 1; c < mapColumns - 1; c++)
             {
-				if (map [r, c] == '@') {
-					continue;
-				}
-=======
-		for (int r = 1; r < mapRows - 1; r++) {
-			for (int c = 1; c < mapColumns - 1; c++) {
+                map[r, c] = 'O';
+            }
+        }
 
-				if (map [r, c] == '@') {
-					continue;
-				}
+        int mapSeed = System.DateTime.Now.Millisecond;
+        Random.seed = mapSeed;
+        Debug.Log("Current seed = " + mapSeed);
 
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
-				string validCharacters = GetValidBoxCharacters (r, c);
-				map [r, c] = validCharacters [Random.Range (0, validCharacters.Length)];
-			}
-		}
-	}
+        // map [1, 1] = '@';
+        // map [1, 2] = '@';
+        // map [2, 1] = '@';
+        // map [2, 2] = '@';
 
-<<<<<<< HEAD
+
+        for (int r = 1; r < mapRows - 1; r++)
+        {
+            for (int c = 1; c < mapColumns - 1; c++)
+            {
+                if (map[r, c] == '@')
+                {
+                    continue;
+                }
+
+                string validCharacters = GetValidBoxCharacters(r, c);
+                map[r, c] = validCharacters[Random.Range(0, validCharacters.Length)];
+                                    
+            }
+        }
+    }
+
+
     public void GetGateway() 
     {
         int c;
@@ -100,7 +98,7 @@ public class MapGenerator : MonoBehaviour {
         bool hasExit = false;
 
         System.Random rnd = new System.Random();
-        int[] gatewayHeight = Enumerable.Range(1, mapRows-1).OrderBy(r => rnd.Next()).ToArray();
+        int[] gatewayHeight = Enumerable.Range(1, mapRows-1).OrderBy(ra => rnd.Next()).ToArray();
 
         for (int r = 1; r < mapRows - 1; r++)
         {
@@ -143,7 +141,7 @@ public class MapGenerator : MonoBehaviour {
             }
         }
 
-        gatewayHeight = Enumerable.Range(1, mapRows - 1).OrderBy(r => rnd.Next()).ToArray();
+        gatewayHeight = Enumerable.Range(1, mapRows - 1).OrderBy(ra => rnd.Next()).ToArray();
 
         for (int r = 1; r < mapRows - 1; r++)
         {
@@ -263,8 +261,6 @@ public class MapGenerator : MonoBehaviour {
         }
     }
 
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 
 	private string GetValidBoxCharacters(int row, int column) {
 		string validCharacters = "";
@@ -313,42 +309,27 @@ public class MapGenerator : MonoBehaviour {
 			TraverseCells (visitedCells, row, column + 1);
 			TraverseCells (visitedCells, row + 1, column);
 			break;
-<<<<<<< HEAD
 
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┐':
 			TraverseCells (visitedCells, row + 1, column);
 			TraverseCells (visitedCells, row, column - 1);
 			break;
-<<<<<<< HEAD
 
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '─':
 			TraverseCells (visitedCells, row, column - 1);
 			TraverseCells (visitedCells, row, column + 1);
 			break;
-<<<<<<< HEAD
 
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '│':
 			TraverseCells (visitedCells, row - 1, column);
 			TraverseCells (visitedCells, row + 1, column);
 			break;
-<<<<<<< HEAD
 
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '└':
 			TraverseCells (visitedCells, row, column + 1);
 			TraverseCells (visitedCells, row - 1, column);
 			break;
-<<<<<<< HEAD
 
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┘':
 			TraverseCells (visitedCells, row - 1, column);
 			TraverseCells (visitedCells, row, column - 1);
@@ -358,52 +339,35 @@ public class MapGenerator : MonoBehaviour {
 			TraverseCells (visitedCells, row + 1, column);
 			TraverseCells (visitedCells, row, column + 1);
 			break;
-<<<<<<< HEAD
 
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┤':
 			TraverseCells (visitedCells, row - 1, column);
 			TraverseCells (visitedCells, row + 1, column);
 			TraverseCells (visitedCells, row, column - 1);
 			break;
-<<<<<<< HEAD
 
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┬':
 			TraverseCells (visitedCells, row, column - 1);
 			TraverseCells (visitedCells, row, column + 1);
 			TraverseCells (visitedCells, row + 1, column);
 			break;
-<<<<<<< HEAD
 
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┴':
 			TraverseCells (visitedCells, row, column - 1);
 			TraverseCells (visitedCells, row, column + 1);
 			TraverseCells (visitedCells, row - 1, column);
 			break;
-<<<<<<< HEAD
 
-=======
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┼':
 			TraverseCells (visitedCells, row, column - 1);
 			TraverseCells (visitedCells, row, column + 1);
 			TraverseCells (visitedCells, row - 1, column);
 			TraverseCells (visitedCells, row + 1, column);
 			break;
-<<<<<<< HEAD
 
 		case 'O':
 			return; // This is one of those pesky dead-ends!
 
-=======
-		case 'O':
-			return; // This is one of those pesky dead-ends!
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		default:
 			Debug.LogError ("No idea how we got here (" + row + "," + column + ") '" + map[row,column]);
 			return;
@@ -411,17 +375,16 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	private void InitializeBoxCharacters() {
-<<<<<<< HEAD
+
 		boxCharacters = "─│┌┐└┘├┤┬┴┼"; 
-=======
+
 		boxCharacters = "─│┌┐└┘├┤┬┴┼O"; 
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
+
 		boxCharacterUpFriends = new string[boxCharacters.Length];
 		boxCharacterDownFriends = new string[boxCharacters.Length];
 		boxCharacterLeftFriends = new string[boxCharacters.Length];
 		boxCharacterRightFriends = new string[boxCharacters.Length];
 
-<<<<<<< HEAD
         boxCharacterLeftFriends[0] = "O─┌└├┬┴┼"; //    ─
         boxCharacterLeftFriends[1] = "O│┐┘┤X"; //     │
         boxCharacterLeftFriends[2] = "O│┐┘┤X"; //     ┌
@@ -470,8 +433,7 @@ public class MapGenerator : MonoBehaviour {
         boxCharacterDownFriends[8] = "O│└┘├┤┴┼"; //     ┬
         boxCharacterDownFriends[9] = "O─┌┐┬X"; //        ┴
         boxCharacterDownFriends[10] = "O│└┘├┤┴┼"; //     ┼
-    }
-=======
+    
 		boxCharacterLeftFriends [0] = "O─┌└├┬┴┼"; //    ─
 		boxCharacterLeftFriends [1] = "O│┐┘┤X"; //     │
 		boxCharacterLeftFriends [2] = "O│┐┘┤X"; //     ┌
@@ -520,6 +482,5 @@ public class MapGenerator : MonoBehaviour {
 		boxCharacterDownFriends [9] = "O─┌┐┬X"; //        ┴
 		boxCharacterDownFriends [10] = "O│└┘├┤┴┼"; //     ┼
 	}
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 
 }

@@ -5,24 +5,17 @@ public class DungeonDisplay : MonoBehaviour {
 	public GameObject[] shapes;
 	private MapGenerator mapGenerator;
 	public float minimumMazePercentage = 0.8f;
-<<<<<<< HEAD
-    private bool entrancePlaced, exitPlaced = false;
 
-    // Use this for initialization
-    void Start ()
-    {
-=======
+    private bool entrancePlaced, exitPlaced = false;
 
 	// Use this for initialization
 	void Start () {
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
+
 		mapGenerator = GetComponent<MapGenerator> ();
 
 		int visitedCellCount = 0;
 		bool[,] visitedCells = new bool[mapGenerator.mapRows, mapGenerator.mapColumns];
-<<<<<<< HEAD
         
-
 		int minimumMazeCells = Mathf.FloorToInt((mapGenerator.mapRows - 2) * (mapGenerator.mapColumns - 2) * minimumMazePercentage);
 
 		while (visitedCellCount < minimumMazeCells)
@@ -153,53 +146,11 @@ public class DungeonDisplay : MonoBehaviour {
         }
     }
 
-    private int GetVisitedCellsCount(bool[,] visitedCells)
-    {
-		int visitedCellsCount = 0;
-
-		for (int r = 1; r < mapGenerator.mapRows - 1; r++)
-        {
-			for (int c = 1; c < mapGenerator.mapColumns - 1; c++)
-            {
-=======
-
-		int minimumMazeCells = Mathf.FloorToInt((mapGenerator.mapRows - 2) * (mapGenerator.mapColumns - 2) * minimumMazePercentage);
-
-		while (visitedCellCount < minimumMazeCells) {
-			Debug.Log ("Current dungeon size = " + visitedCellCount + " which is less than the required " + minimumMazeCells + ". Retrying");
-			mapGenerator.InitializeMap ();
-			visitedCells = mapGenerator.TraverseMap ();
-			visitedCellCount = GetVisitedCellsCount (visitedCells);
-			Debug.Log ("visited cell count = " + visitedCellCount);
-		}
-
-		mapGenerator.DisplayMap ();
-
-		for (int r = 1; r < mapGenerator.mapRows-1; r++) {
-			for (int c = 1; c < mapGenerator.mapColumns - 1; c++) {
-				string ch = mapGenerator.map [r, c].ToString();
-				int charPos = mapGenerator.boxCharacters.IndexOf (ch);
-
-                if (ch.Equals('X'))
-                    charPos = 0;
-
-                if (charPos < 0 || !visitedCells[r,c]) 
-					continue;
-
-                //if (c == 1 && r == 2 || c == mapGenerator.mapColumns - 1 && r == 2)
-                    //charPos = 0;
-
-				Instantiate (shapes [charPos], new Vector3 (r * 3, 0, c * 3), shapes[charPos].transform.rotation);
-			}
-		}
-	}
-
 	private int GetVisitedCellsCount(bool[,] visitedCells) {
 		int visitedCellsCount = 0;
 
 		for (int r = 1; r < mapGenerator.mapRows - 1; r++) {
 			for (int c = 1; c < mapGenerator.mapColumns - 1; c++) {
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 				if (visitedCells [r, c]) {
 					visitedCellsCount++;
 				}
@@ -210,12 +161,7 @@ public class DungeonDisplay : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-<<<<<<< HEAD
-	void Update ()
-    {
-
-=======
 	void Update () {
->>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
+
 	}
 }
