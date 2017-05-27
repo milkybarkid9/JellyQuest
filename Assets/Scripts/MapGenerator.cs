@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+<<<<<<< HEAD
 using System.Linq;
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 
 public class MapGenerator : MonoBehaviour {
 	public int mapRows = 5;
@@ -66,6 +69,7 @@ public class MapGenerator : MonoBehaviour {
 		// map [2, 1] = '@';
 		// map [2, 2] = '@';
 
+<<<<<<< HEAD
 		for (int r = 1; r < mapRows - 1; r++)
         {
 			for (int c = 1; c < mapColumns - 1; c++)
@@ -73,12 +77,22 @@ public class MapGenerator : MonoBehaviour {
 				if (map [r, c] == '@') {
 					continue;
 				}
+=======
+		for (int r = 1; r < mapRows - 1; r++) {
+			for (int c = 1; c < mapColumns - 1; c++) {
+
+				if (map [r, c] == '@') {
+					continue;
+				}
+
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 				string validCharacters = GetValidBoxCharacters (r, c);
 				map [r, c] = validCharacters [Random.Range (0, validCharacters.Length)];
 			}
 		}
 	}
 
+<<<<<<< HEAD
     public void GetGateway() 
     {
         int c;
@@ -249,6 +263,8 @@ public class MapGenerator : MonoBehaviour {
         }
     }
 
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 
 	private string GetValidBoxCharacters(int row, int column) {
 		string validCharacters = "";
@@ -297,27 +313,42 @@ public class MapGenerator : MonoBehaviour {
 			TraverseCells (visitedCells, row, column + 1);
 			TraverseCells (visitedCells, row + 1, column);
 			break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┐':
 			TraverseCells (visitedCells, row + 1, column);
 			TraverseCells (visitedCells, row, column - 1);
 			break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '─':
 			TraverseCells (visitedCells, row, column - 1);
 			TraverseCells (visitedCells, row, column + 1);
 			break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '│':
 			TraverseCells (visitedCells, row - 1, column);
 			TraverseCells (visitedCells, row + 1, column);
 			break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '└':
 			TraverseCells (visitedCells, row, column + 1);
 			TraverseCells (visitedCells, row - 1, column);
 			break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┘':
 			TraverseCells (visitedCells, row - 1, column);
 			TraverseCells (visitedCells, row, column - 1);
@@ -327,35 +358,52 @@ public class MapGenerator : MonoBehaviour {
 			TraverseCells (visitedCells, row + 1, column);
 			TraverseCells (visitedCells, row, column + 1);
 			break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┤':
 			TraverseCells (visitedCells, row - 1, column);
 			TraverseCells (visitedCells, row + 1, column);
 			TraverseCells (visitedCells, row, column - 1);
 			break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┬':
 			TraverseCells (visitedCells, row, column - 1);
 			TraverseCells (visitedCells, row, column + 1);
 			TraverseCells (visitedCells, row + 1, column);
 			break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┴':
 			TraverseCells (visitedCells, row, column - 1);
 			TraverseCells (visitedCells, row, column + 1);
 			TraverseCells (visitedCells, row - 1, column);
 			break;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		case '┼':
 			TraverseCells (visitedCells, row, column - 1);
 			TraverseCells (visitedCells, row, column + 1);
 			TraverseCells (visitedCells, row - 1, column);
 			TraverseCells (visitedCells, row + 1, column);
 			break;
+<<<<<<< HEAD
 
 		case 'O':
 			return; // This is one of those pesky dead-ends!
 
+=======
+		case 'O':
+			return; // This is one of those pesky dead-ends!
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		default:
 			Debug.LogError ("No idea how we got here (" + row + "," + column + ") '" + map[row,column]);
 			return;
@@ -363,12 +411,17 @@ public class MapGenerator : MonoBehaviour {
 	}
 
 	private void InitializeBoxCharacters() {
+<<<<<<< HEAD
 		boxCharacters = "─│┌┐└┘├┤┬┴┼"; 
+=======
+		boxCharacters = "─│┌┐└┘├┤┬┴┼O"; 
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 		boxCharacterUpFriends = new string[boxCharacters.Length];
 		boxCharacterDownFriends = new string[boxCharacters.Length];
 		boxCharacterLeftFriends = new string[boxCharacters.Length];
 		boxCharacterRightFriends = new string[boxCharacters.Length];
 
+<<<<<<< HEAD
         boxCharacterLeftFriends[0] = "O─┌└├┬┴┼"; //    ─
         boxCharacterLeftFriends[1] = "O│┐┘┤X"; //     │
         boxCharacterLeftFriends[2] = "O│┐┘┤X"; //     ┌
@@ -418,5 +471,55 @@ public class MapGenerator : MonoBehaviour {
         boxCharacterDownFriends[9] = "O─┌┐┬X"; //        ┴
         boxCharacterDownFriends[10] = "O│└┘├┤┴┼"; //     ┼
     }
+=======
+		boxCharacterLeftFriends [0] = "O─┌└├┬┴┼"; //    ─
+		boxCharacterLeftFriends [1] = "O│┐┘┤X"; //     │
+		boxCharacterLeftFriends [2] = "O│┐┘┤X"; //     ┌
+		boxCharacterLeftFriends [3] = "O─┌└├┬┴┼"; //    ┐
+		boxCharacterLeftFriends [4] = "O│┐┘┤X"; //     └
+		boxCharacterLeftFriends [5] = "O─┌└├┬┴┼"; //    ┘
+		boxCharacterLeftFriends [6] = "O│┐┘┤X"; //      ├
+		boxCharacterLeftFriends [7] = "O─┌└├┬┴┼"; //   ┤
+		boxCharacterLeftFriends [8] = "O─┌└├┬┴┼"; //    ┬
+		boxCharacterLeftFriends [9] = "O─┌└├┬┴┼"; //    ┴
+		boxCharacterLeftFriends [10] = "O─┌└├┬┴┼"; //   ┼
+
+		boxCharacterRightFriends [0] = "O─┐┘┤┬┴┼"; //    ─
+		boxCharacterRightFriends [1] = "O│┌└├X"; //     │
+		boxCharacterRightFriends [2] = "O─┐┘┤┬┴┼"; //   ┌
+		boxCharacterRightFriends [3] = "O│┌└├X"; //      ┐
+		boxCharacterRightFriends [4] = "O─┐┘┤┬┴┼"; //   └
+		boxCharacterRightFriends [5] = "O│┌└├X"; //      ┘
+		boxCharacterRightFriends [6] = "O─┐┘┤┬┴┼"; //   ├
+		boxCharacterRightFriends [7] = "O│┌└├X"; //      ┤
+		boxCharacterRightFriends [8] = "O─┐┘┤┬┴┼"; //    ┬
+		boxCharacterRightFriends [9] = "O─┐┘┤┬┴┼"; //    ┴
+		boxCharacterRightFriends [10] = "O─┐┘┤┬┴┼"; //   ┼
+
+		boxCharacterUpFriends [0] = "O─└┘┴X"; //       ─
+		boxCharacterUpFriends [1] = "O│┌┐├┤┬┼"; //      │
+		boxCharacterUpFriends [2] = "O─└┘┴X"; //        ┌
+		boxCharacterUpFriends [3] = "O─└┘┴X"; //        ┐
+		boxCharacterUpFriends [4] = "O│┌┐├┤┬┼"; //     └
+		boxCharacterUpFriends [5] = "O│┌┐├┤┬┼"; //     ┘
+		boxCharacterUpFriends [6] = "O│┌┐├┤┬┼"; //      ├
+		boxCharacterUpFriends [7] = "O│┌┐├┤┬┼"; //      ┤
+		boxCharacterUpFriends [8] = "O─└┘┴X"; //        ┬
+		boxCharacterUpFriends [9] = "O│┌┐├┤┬┼"; //     ┴
+		boxCharacterUpFriends [10] = "O│┌┐├┤┬┼"; //     ┼
+
+		boxCharacterDownFriends [0] = "O─┌┐┬X"; //       ─
+		boxCharacterDownFriends [1] = "O│└┘├┤┴┼"; //      │
+		boxCharacterDownFriends [2] = "O│└┘├┤┴┼"; //     ┌
+		boxCharacterDownFriends [3] = "O│└┘├┤┴┼"; //     ┐
+		boxCharacterDownFriends [4] = "O─┌┐┬X"; //        └
+		boxCharacterDownFriends [5] = "O─┌┐┬X"; //        ┘
+		boxCharacterDownFriends [6] = "O│└┘├┤┴┼"; //      ├
+		boxCharacterDownFriends [7] = "O│└┘├┤┴┼"; //      ┤
+		boxCharacterDownFriends [8] = "O│└┘├┤┴┼"; //     ┬
+		boxCharacterDownFriends [9] = "O─┌┐┬X"; //        ┴
+		boxCharacterDownFriends [10] = "O│└┘├┤┴┼"; //     ┼
+	}
+>>>>>>> c9c6e123641729d83863337554225c5f6e66c1fe
 
 }
