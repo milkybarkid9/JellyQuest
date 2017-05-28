@@ -6,7 +6,10 @@ public class DungeonDisplay : MonoBehaviour {
 	private MapGenerator mapGenerator;
 	public float minimumMazePercentage = 0.8f;
 
-    private bool entrancePlaced, exitPlaced = false;
+    [SerializeField]
+    private int tileHeight = 3;
+    [SerializeField]
+    private int tileWidth = 3;
 
 	// Use this for initialization
 	void Start () {
@@ -26,8 +29,9 @@ public class DungeonDisplay : MonoBehaviour {
             visitedCellCount = GetVisitedCellsCount (visitedCells);
 			Debug.Log ("visited cell count = " + visitedCellCount);
 		}
-
+        mapGenerator.DisplayMap();
         mapGenerator.GetDeadEnds();
+        mapGenerator.DisplayMap();
         mapGenerator.GetGateway();
         mapGenerator.DisplayMap ();
 
@@ -39,70 +43,70 @@ public class DungeonDisplay : MonoBehaviour {
 
                 switch (ch) //─│┌┐└┘├┤┬┴┼XO
                 {
-                    case "─":
-                        Instantiate(shapes[0], new Vector3(r * 3, 0, c * 3), shapes[0].transform.rotation);
+                    case "─":                              // x y z 
+                        Instantiate(shapes[0], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[0].transform.rotation);
                         break;
 
                     case "│":
-                        Instantiate(shapes[1], new Vector3(r * 3, 0, c * 3), shapes[1].transform.rotation);
+                        Instantiate(shapes[1], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[1].transform.rotation);
                         break;
 
                     case "┌":
-                        Instantiate(shapes[2], new Vector3(r * 3, 0, c * 3), shapes[2].transform.rotation);
+                        Instantiate(shapes[2], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[2].transform.rotation);
                         break;
 
                     case "┐":
-                        Instantiate(shapes[3], new Vector3(r * 3, 0, c * 3), shapes[3].transform.rotation);
+                        Instantiate(shapes[3], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[3].transform.rotation);
                         break;
 
                     case "└":
-                        Instantiate(shapes[4], new Vector3(r * 3, 0, c * 3), shapes[4].transform.rotation);
+                        Instantiate(shapes[4], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[4].transform.rotation);
                         break;
 
                     case "┘":
-                        Instantiate(shapes[5], new Vector3(r * 3, 0, c * 3), shapes[5].transform.rotation);
+                        Instantiate(shapes[5], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[5].transform.rotation);
                         break;
 
                     case "├":
-                        Instantiate(shapes[6], new Vector3(r * 3, 0, c * 3), shapes[6].transform.rotation);
+                        Instantiate(shapes[6], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[6].transform.rotation);
                         break;
 
                     case "┤":
-                        Instantiate(shapes[7], new Vector3(r * 3, 0, c * 3), shapes[7].transform.rotation);
+                        Instantiate(shapes[7], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[7].transform.rotation);
                         break;
 
                     case "┬":
-                        Instantiate(shapes[8], new Vector3(r * 3, 0, c * 3), shapes[8].transform.rotation);
+                        Instantiate(shapes[8], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[8].transform.rotation);
                         break;
 
                     case "┴":
-                        Instantiate(shapes[9], new Vector3(r * 3, 0, c * 3), shapes[9].transform.rotation);
+                        Instantiate(shapes[9], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[9].transform.rotation);
                         break;
 
                     case "┼":
-                        Instantiate(shapes[10], new Vector3(r * 3, 0, c * 3), shapes[10].transform.rotation);
+                        Instantiate(shapes[10], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[10].transform.rotation);
                         break;
 
                     case "u":
-                        Instantiate(shapes[11], new Vector3(r * 3, 0, c * 3), shapes[11].transform.rotation);
+                        Instantiate(shapes[11], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[11].transform.rotation);
                         break;
 
                     case "d":
-                        Instantiate(shapes[12], new Vector3(r * 3, 0, c * 3), shapes[12].transform.rotation);
+                        Instantiate(shapes[12], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[12].transform.rotation);
                         break;
 
                     case "l":
-                        Instantiate(shapes[13], new Vector3(r * 3, 0, c * 3), shapes[13].transform.rotation);
+                        Instantiate(shapes[13], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[13].transform.rotation);
                         break;
 
                     case "r":
-                        Instantiate(shapes[14], new Vector3(r * 3, 0, c * 3), shapes[14].transform.rotation);
+                        Instantiate(shapes[14], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[14].transform.rotation);
                         break;
 
                     default:
                     case "X":
                     case "O":
-                        Instantiate(shapes[15], new Vector3(r * 3, 0, c * 3), shapes[15].transform.rotation);
+                        Instantiate(shapes[15], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[15].transform.rotation);
                         break;
                 }
                 //}
