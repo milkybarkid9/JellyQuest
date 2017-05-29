@@ -23,17 +23,17 @@ public class DungeonDisplay : MonoBehaviour {
 
 		while (visitedCellCount < minimumMazeCells)
         {
-			Debug.Log ("Current dungeon size = " + visitedCellCount + " which is less than the required " + minimumMazeCells + ". Retrying");
+			//Debug.Log ("Current dungeon size = " + visitedCellCount + " which is less than the required " + minimumMazeCells + ". Retrying");
 			mapGenerator.InitializeMap ();
 			visitedCells = mapGenerator.TraverseMap ();            
             visitedCellCount = GetVisitedCellsCount (visitedCells);
-			Debug.Log ("visited cell count = " + visitedCellCount);
+			//Debug.Log ("visited cell count = " + visitedCellCount);
 		}
-        mapGenerator.DisplayMap();
+        //mapGenerator.DisplayMap();
         mapGenerator.GetDeadEnds();
-        mapGenerator.DisplayMap();
+        //mapGenerator.DisplayMap();
         mapGenerator.GetGateway();
-        mapGenerator.DisplayMap ();
+        //mapGenerator.DisplayMap ();
 
 		for (int r = 0; r < mapGenerator.mapRows; r++)
         {
