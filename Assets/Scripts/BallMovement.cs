@@ -5,6 +5,8 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour {
 
     [SerializeField]
+    public int currentScore = 0;
+    [SerializeField]
     public float ballVelocity = 100;
     Rigidbody2D rb;
     bool mapOpen = false;

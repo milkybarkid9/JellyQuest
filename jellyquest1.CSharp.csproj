@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BallMovement.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\CoinCollect.cs" />
     <Compile Include="Assets\Scripts\CurrentGeneration.cs" />
     <Compile Include="Assets\Scripts\DungeonDisplay.cs" />
     <Compile Include="Assets\Scripts\MapGenerator.cs" />
