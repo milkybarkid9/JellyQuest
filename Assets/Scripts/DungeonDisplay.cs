@@ -3,16 +3,21 @@ using System.Collections;
 
 public class DungeonDisplay : MonoBehaviour {
 	public GameObject[] shapes;
-	private MapGenerator mapGenerator;
+	public MapGenerator mapGenerator;
 	public float minimumMazePercentage = 0.8f;
 
     [SerializeField]
-    private int tileHeight = 3;
+    public int tileHeight;
     [SerializeField]
-    private int tileWidth = 3;
+    public int tileWidth;
+    public Vector2 startPos;
 
-	// Use this for initialization
-	void Start () {
+    public float getTileWidth() { return tileWidth; }
+    public float getTileHeight() { return tileHeight; }
+    public MapGenerator getMapGenerator() { return mapGenerator; }
+
+    // Use this for initialization
+    void Start () {
 
 		mapGenerator = GetComponent<MapGenerator> ();
 
@@ -45,6 +50,10 @@ public class DungeonDisplay : MonoBehaviour {
                 {
                     case "─":                              // x y z 
                         Instantiate(shapes[0], new Vector3(c * tileWidth, -r * tileHeight, 0), shapes[0].transform.rotation);
+                        if (c == 0) {
+                            startPos.x = -2*tileWidth/5;
+                            startPos.y = (-tileHeight * r) /*+ (-tileHeight / 2)*/;
+                        }
                         break;
 
                     case "│":
@@ -112,6 +121,7 @@ public class DungeonDisplay : MonoBehaviour {
                 //}
             }
 		}
+        GameObject.Find("Sphere").transform.position = startPos;
 	}
 
     private bool HasRightConnection(int r, int c)

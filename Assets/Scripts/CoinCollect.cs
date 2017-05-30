@@ -18,6 +18,7 @@ public class CoinCollect : MonoBehaviour {
     
     void OnTriggerEnter2D(Collider2D collide)
     {
+        Debug.Log("Coin collision");
         if (collide.tag.Equals("Player"))
         {
             sphere.GetComponent<BallMovement>().currentScore++;

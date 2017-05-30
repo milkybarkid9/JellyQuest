@@ -16,6 +16,9 @@ public class MapGenerator : MonoBehaviour {
 	private string[] boxCharacterLeftFriends;
 	private string[] boxCharacterRightFriends;
 
+    public int getMapRows() { return mapRows; }
+    public int getMapColumns() { return mapColumns; }
+
 	// Use this for initialization
 	void Awake () {
 		InitializeBoxCharacters ();
