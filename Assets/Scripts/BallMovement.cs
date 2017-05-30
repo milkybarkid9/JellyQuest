@@ -13,8 +13,12 @@ public class BallMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        gameObject.transform.position = new Vector3(-10, -10, 0);
+        rb = gameObject.GetComponent<Rigidbody2D>();        
+    }
+
+    void Awake()
+    {
+        //GameObject.Find("GameManager").GetComponent<PositionPlayer>().MoveToStart();
     }
 	
 	// Update is called once per frame
