@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class CurrentGeneration : MonoBehaviour {
 
-    private Vector3 lastPos, currentPos;
-    private Vector4[] movement; //x, y, direction, force
-    int frameCount = 0;
-    GameObject ball = GameObject.Find("Sphere");
+    private Vector3 downPos, upPos, capsulePos;
+
+    [SerializeField]
+    GameObject capsule;
+
+    CapsuleCollider capsuleCollider;
+
+    float distance;
+    float angle;
     float range = 0.1f;
 
 	// Use this for initialization
@@ -17,24 +22,33 @@ public class CurrentGeneration : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (frameCount <= 600)
-            frameCount = 0;
+        if (Input.GetMouseButtonDown(0))
+        {
+            downPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);            
+            downPos = Camera.main.ScreenToWorldPoint(downPos);
+            Debug.Log("mouse downpos " + downPos);
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            upPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0); //get pos of button up
+            upPos = Camera.main.ScreenToWorldPoint(upPos); //convert from camera to world position
+            Debug.Log("mouse uppos " + upPos);
+            capsulePos = (downPos + upPos) * 0.5f; //find midpoint
+            capsulePos.z = 0; 
+            upPos = new Vector3(upPos.x, upPos.y, 0);
+            downPos = new Vector3(downPos.x, downPos.y, 0);
+
+            capsule.GetComponent<RenderLine>().Initialise(downPos, upPos);
+            angle = Mathf.Atan((upPos.y - downPos.y) / (upPos.x - downPos.x)); //Tan(angle) = opposite / adjacent;
+            angle = angle * 180/3.14159f; //convert to degrees
+            Debug.Log("angle " + angle);
+            Instantiate(capsule, capsulePos, Quaternion.AngleAxis(angle, Vector3.forward)); 
+        }
 
         if (Input.GetMouseButton(0))
         {
-            lastPos = currentPos;
-            currentPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
-
-            float distance = Vector3.Distance(lastPos, currentPos);
-            float time = Time.deltaTime;
-            float speed = distance / time;
-
-            float direction = Vector3.Angle(lastPos, currentPos);
-            movement[frameCount] = new Vector4(currentPos.x, currentPos.y, direction, speed);
+            distance = Vector3.Distance(downPos, upPos);            
         }
-
-        //if((ball.transform.position.x - center_x) ^ 2 + (ball.transform.position.y - center_y) ^ 2 < range ^ 2)
-
-        frameCount++;
 	}
 }
