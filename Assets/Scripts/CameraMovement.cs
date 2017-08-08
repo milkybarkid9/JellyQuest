@@ -21,7 +21,13 @@ public class CameraMovement : MonoBehaviour {
 	void Update () {
         float yPos = GameObject.Find("Sphere").transform.position.y;
         float xPos = GameObject.Find("Sphere").transform.position.x;
-        xPos = Mathf.Clamp(xPos, -10, 40*cols-30);
+
+        if(gameObject.GetComponent<Camera>().orthographicSize == 5)
+            xPos = Mathf.Clamp(xPos, -10.5f, 40*cols-30);
+
+        if (gameObject.GetComponent<Camera>().orthographicSize == 30)
+            xPos = Mathf.Clamp(xPos, 36, 40 * cols - 30);
+
         gameObject.transform.position = new Vector3(xPos, yPos, -10);
     }
 }
